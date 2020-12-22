@@ -81,12 +81,25 @@ function addUser() {
     const inputMarca = document.getElementById('Marca');
     const Marca = inputMarca.value;
 
+    const InputColor = document.getElementById('Color');
+    const Color = InputColor.value;
+
+    const InputAño = document.getElementById('año');
+    const año = InputAño.value;
+
+    const InputPrecio = document.getElementById('precio');
+    const precio = InputPrecio.value;
+    
+
     const Modelo = document.getElementById('Modelo').value;
     const id = users[users.length -1].id + 1;
 
     const newUser = {
         Marca,
         Modelo,
+        Color,
+        año,
+        precio,
         id,
     }
     users.push(newUser);
