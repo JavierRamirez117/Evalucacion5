@@ -58,8 +58,8 @@ function printUsers() {
                         <button onclick="deleteUser(${user.id})" class="btn btn-danger">
                             Eliminar
                         </button>
-                        <button onclick="uptadeUser(${user.id})" class="btn btn-danger">
-                            actualizar
+                        <button onclick="enableuptadeUser(${user.id})" class="btn btn-warning">
+                            Actualizar
                         </button>
                     </td>
                 </tr>`;
@@ -75,7 +75,7 @@ function deleteUser(id) {
     printUsers();
 }
 
-function uptadeUser(id) {
+function enableuptadeUser(id) {
     const user = users.find((user) => user.id ==id);
 
     const InputMarca = document.getElementById('Marca');
@@ -97,7 +97,7 @@ function uptadeUser(id) {
 function addUser() {
 
     const InputMarca = document.getElementById('Marca');
-    const Marca = inputMarca.value;
+    const Marca = InputMarca.value;
 
     const InputColor = document.getElementById('Color');
     const Color = InputColor.value;
@@ -111,7 +111,10 @@ function addUser() {
     const InputModelo = document.getElementById('Modelo');
     const Modelo = InputModelo.value;
     
-    const id = users[users.length -1].id + 1;
+    let id = 1;
+    if(users.length > 0) {
+        id = users[users.length -1].id + 1;
+    }
 
     const newUser = {
         Marca,
@@ -124,8 +127,11 @@ function addUser() {
     users.push(newUser);
     printUsers();
 
-    // limpiamos el formulario
     document.getElementById('form-user').reset();
+}
+
+function updateUser() { 
+   
 }
 
 printUsers();
