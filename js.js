@@ -58,6 +58,9 @@ function printUsers() {
                         <button onclick="deleteUser(${user.id})" class="btn btn-danger">
                             Eliminar
                         </button>
+                        <button onclick="uptadeUser(${user.id})" class="btn btn-danger">
+                            actualizar
+                        </button>
                     </td>
                 </tr>`;
     });
@@ -66,19 +69,34 @@ function printUsers() {
 
 function deleteUser(id) {
 
-    // Como elimino un valor de un arreglo? 1. pop -> shift -> splice
-    // necesito el índice -> ¿cómo obtengo el índice del elemento si lo que yo recibo es el id? -> findIndex
     const index = users.findIndex((user) => user.id == id );
     users.splice(index, 1);
 
     printUsers();
 }
 
+function uptadeUser(id) {
+    const user = users.find((user) => user.id ==id);
+
+    const InputMarca = document.getElementById('Marca');
+    InputMarca.value = user.Marca;
+
+    const InputColor = document.getElementById('Color');
+    InputColor.value = user.Color;
+
+    const InputAño = document.getElementById('año');
+    InputAño.value = user.año;
+
+    const InputPrecio = document.getElementById('precio');
+    InputPrecio.value = user.precio;
+
+    const InputModelo = document.getElementById('Modelo');
+    InputModelo.value = user.precio;
+}
+
 function addUser() {
-    // obtner el valor del input
-    // agregar el usuario al arreglo
-    // imprimo nuevamente los usuarios
-    const inputMarca = document.getElementById('Marca');
+
+    const InputMarca = document.getElementById('Marca');
     const Marca = inputMarca.value;
 
     const InputColor = document.getElementById('Color');
@@ -89,9 +107,10 @@ function addUser() {
 
     const InputPrecio = document.getElementById('precio');
     const precio = InputPrecio.value;
-    
 
-    const Modelo = document.getElementById('Modelo').value;
+    const InputModelo = document.getElementById('Modelo');
+    const Modelo = InputModelo.value;
+    
     const id = users[users.length -1].id + 1;
 
     const newUser = {
