@@ -41,10 +41,10 @@ const users = [
     }
 ];
 
+let updating = false; 
+let updatingid = -1
 function printUsers() {
-    // 1. Obtengo el elemento html en el que quiero poner los usuarios
-    // 2. Genero el html de los usuarios
-    // 3. Pongo el html en el elemento obtenido
+    
     const container = document.getElementById('container-users');
     let html = '';
     users.forEach((user) => {
@@ -76,6 +76,9 @@ function deleteUser(id) {
 }
 
 function enableuptadeUser(id) {
+
+    updatingid = id;
+     
     const user = users.find((user) => user.id ==id);
 
     const InputMarca = document.getElementById('Marca');
@@ -92,9 +95,22 @@ function enableuptadeUser(id) {
 
     const InputModelo = document.getElementById('Modelo');
     InputModelo.value = user.precio;
+    
+    updating = true;
+
+    document.getElementById('save').text = 'Actualizar';
+    let button = document.getElementById('save');
+    button.classList.remove('btn-primary')
+    button.classList.add('btn-warning')
 }
 
 function addUser() {
+     
+    if(updating) {
+        updateUser();
+        return;
+    }
+
 
     const InputMarca = document.getElementById('Marca');
     const Marca = InputMarca.value;
@@ -131,7 +147,35 @@ function addUser() {
 }
 
 function updateUser() { 
-   
+    const user = users.find((user) => user.id === updatingid)
+
+    const InputMarca = document.getElementById('Marca');
+    const Marca = InputMarca.value;
+
+    const InputColor = document.getElementById('Color');
+    const Color = InputColor.value;
+
+    const InputAño = document.getElementById('año');
+    const año = InputAño.value;
+
+    const InputPrecio = document.getElementById('precio');
+    const precio = InputPrecio.value;
+
+    const InputModelo = document.getElementById('Modelo');
+    const Modelo = InputModelo.value;
+    
+    user.Marca = Marca
+    user.Color = Color
+    user.año = año
+    user.precio = precio
+    user.Modelo = Modelo;
+
+    printUsers();
+
+    document.getElementById('form-user').reset();
+
+    updating = false; 
+    updatingid = -1
 }
 
 printUsers();
