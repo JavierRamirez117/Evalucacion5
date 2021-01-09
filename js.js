@@ -98,10 +98,11 @@ function enableuptadeUser(id) {
     
     updating = true;
 
-    document.getElementById('save').text = 'Actualizar';
     let button = document.getElementById('save');
+    button.textContent = 'Actualizar';
     button.classList.remove('btn-primary')
     button.classList.add('btn-warning')
+    document.getElementById('cancel').classList.remove('d-none')
 }
 
 function addUser() {
@@ -174,8 +175,19 @@ function updateUser() {
 
     document.getElementById('form-user').reset();
 
+    cancelEdition();
+}
+
+function cancelEdition(){
+    document.getElementById('form-user').reset();
+
     updating = false; 
     updatingid = -1
+    let button = document.getElementById('save');
+    button.textContent = 'Enviar';
+    button.classList.remove('btn-warning')
+    button.classList.add('btn-primary')
+    document.getElementById('cancel').classList.add('d-none')
 }
 
 printUsers();
