@@ -6,38 +6,6 @@ const users = [
         Color: 'negro',
         año: "2020",
         precio: "300,000",
-    },
-    {
-        id: 2,
-        Marca: 'Chevrolet',
-        Modelo: "aveo",
-        Color: 'azul',
-        año: "2021",
-        precio: "405,000",
-    },
-    {
-        id: 3,
-        Marca: 'Kia',
-        Modelo: "Rio sedan",
-        Color: 'rosa',
-        año: "2021",
-        precio: "243,000",
-    },
-    {
-        id: 4,
-        Marca: 'Volkswagen',
-        Modelo: "Vento",
-        Color: 'negro',
-        año: "2022",
-        precio: "308,990",
-    },
-    {
-        id: 5,
-        Marca: 'peugeot',
-        Modelo: "suv",
-        Color: 'negro',
-        año: "2021",
-        precio: "391,900",
     }
 ];
 
