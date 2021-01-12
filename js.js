@@ -1,13 +1,4 @@
-const users = [
-    {
-        id: 1,
-        Marca: 'Chevrolet',
-        Modelo: "spark",
-        Color: 'negro',
-        año: "2020",
-        precio: "300,000",
-    }
-];
+const users = JSON.parse(localStorage.getItem('users')) || [];
 
 let updating = false; 
 let updatingid = -1
@@ -15,6 +6,7 @@ function printUsers() {
     
     const container = document.getElementById('container-users');
     let html = '';
+    console.log(users)
     users.forEach((user) => {
         html += `<tr>
                     <td>${user.Marca}</td>
@@ -114,6 +106,8 @@ function addUser() {
 
     document.getElementById('form-user').reset();
 }
+
+localStorage.setItem('users', JSON.stringify(users));
 
 function updateUser() { 
     const user = users.find((user) => user.id === updatingid)
